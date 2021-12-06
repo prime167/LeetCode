@@ -73,8 +73,8 @@ public class UnitTest1 : IDisposable
     }
 
     [Theory]
-    [InlineData(new string[] { "flower", "flow", "flight"}, "fl")]
-    [InlineData(new string[] { "a"}, "a")]
+    [InlineData(new string[] { "flower", "flow", "flight" }, "fl")]
+    [InlineData(new string[] { "a" }, "a")]
     [InlineData(new string[] { "dog", "racecar", "car" }, "")]
     public void Test0014(string[] strs, string expected)
     {
@@ -99,7 +99,7 @@ public class UnitTest1 : IDisposable
         Assert.Equal(expected, r1);
     }
 
-    [Fact]
+    //[Fact]
     //[InlineData("(]{}", false)]
     public void Test0021()
     {
@@ -117,8 +117,17 @@ public class UnitTest1 : IDisposable
         var a2 = BuildList(n11, n12, n13, n14);
 
         var rr = BuildList(n1, n11, n2, n12, n3, n13, n4, n14, n5);
-        var r1 = _problems.MergeTwoLists(a1,a2);
+        var r1 = _problems.MergeTwoLists(a1, a2);
         Assert.Equal(rr, r1);
+    }
+
+    [Theory]
+    [InlineData(new[] { 2, 2, 7, 11, 15 }, 4)]
+    [InlineData(new[] { 1, 1, 1, 2, 7, 11, 15 }, 5)]
+    public void Test0026(int[] array, int expected)
+    {
+        var r1 = _problems.RemoveDuplicates(array);
+        Assert.Equal(expected, r1);
     }
 
     public static IEnumerable<object[]> SplitCountData
