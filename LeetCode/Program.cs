@@ -1,2 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using LeetCode;
+
+Problems problems = new Problems();
+int x = problems.Reverse(1534236469);
+//int y = problems.Reverse(123);

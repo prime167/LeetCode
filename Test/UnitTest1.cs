@@ -34,6 +34,22 @@ public class UnitTest1 : IDisposable
     }
 
     [Theory]
+    [InlineData(121, 121)]
+    [InlineData(-121, -121)]
+    [InlineData(120, 21)]
+    [InlineData(0, 0)]
+    [InlineData(1534236469, 0)]
+    [InlineData(2147483647, 0)]// int.max
+    [InlineData(-2147483648, 0)]// int.min 溢出，返回0
+    [InlineData(-1563847412, 0)] // 溢出，返回0
+    public void Test0007(int a, int expected)
+    {
+        var r1 = _problems.Reverse(a);
+        output.WriteLine(r1.ToString());
+        Assert.Equal(expected, r1);
+    }
+
+    [Theory]
     [InlineData(121, true)]
     [InlineData(-121, false)]
     [InlineData(12, false)]

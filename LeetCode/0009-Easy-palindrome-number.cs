@@ -2,19 +2,29 @@ namespace LeetCode;
 
 public partial class Problems
 {
-    public int[] TwoSum(int[] nums, int target)
+    public bool IsPalindrome(int x)
     {
-        Dictionary<int, int> dic = new Dictionary<int, int>();
-        for (int i = 0; i < nums.Length; i++)
+        if (x < 0)
         {
-            int value = target - nums[i];
-            if (dic.ContainsKey(value))
-            {
-                return new int[] { dic[value], i };
-            }
-            dic[nums[i]] = i;
+            return false;
         }
 
-        return null;
+        var digits = x.ToString().ToCharArray();
+
+        var len = digits.Count();
+        if (len == 1)
+        {
+            return true;
+        }
+
+        for (int i = 0; i < len; i++)
+        {
+            if (digits[i] != digits[len - 1 - i])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
